@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-2.  新增登录页面：src/main/resources/templates/login.html
+4.  新增登录页面：src/main/resources/templates/login.html
 
 ```
 <!DOCTYPE html>
