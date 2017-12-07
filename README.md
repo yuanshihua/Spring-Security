@@ -77,8 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 2.  新增登录页面：src/main/resources/templates/login.html
 
-
->
+```
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -94,7 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         </form>
     </body>
 </html>
-
+```
 
 
 - 可以看到，实现了一个简单的通过用户名和密码提交到/login的登录方式。
