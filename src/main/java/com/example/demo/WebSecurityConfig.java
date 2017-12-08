@@ -11,11 +11,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and().withUser("666").password("666").roles("admin");
+		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and().withUser("666").password("666").roles("ADMIN");
 	}
 	
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/webjars/**", "/signup", "/about").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().successForwardUrl("/index");
+		http.authorizeRequests()
+		.antMatchers("/webjars/**", "/signup", "/about")
+		.permitAll().anyRequest().authenticated().and()
+		.formLogin().loginPage("/login").permitAll()
+		.successForwardUrl("/index");
 		http.csrf().disable();
 	}
 }
