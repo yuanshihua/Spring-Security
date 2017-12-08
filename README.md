@@ -54,8 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 3.  在完成了Spring Security配置之后，我们还缺少登录的相关内容，HelloController中新增/login请求映射至login.html 
 
-
->
+```
 	@Controller
 	public class HelloController {
 	    // 省略之前的内容...
@@ -64,6 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        return "login";
 	    }
 	}
+```
+
 
 注意：此时的login为了避免和spring security的重复，需要用get方式，spring security中的login是post方式。
 
@@ -74,10 +75,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-2.  新增登录页面：src/main/resources/templates/login.html
+4.  新增登录页面：src/main/resources/templates/login.html
 
-
->
+```
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -93,7 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         </form>
     </body>
 </html>
-
+```
 
 
 - 可以看到，实现了一个简单的通过用户名和密码提交到/login的登录方式。
@@ -101,3 +101,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 - 到这里，我们启用应用，并访问http://localhost:8080/，可以正常访问。但是访问http://localhost:8080/hello的时候被重定向到了http://localhost:8080/login页面，因为没有登录，用户没有访问权限，通过输入用户名user和密码password进行登录后，跳转到了Hello World页面
 - 使用这两个方法可以不拦截静态资源 antMatchers("/webjars/**", "/signup", "/about").permitAll()
+
+- .successForwardUrl("/index")使用这个方法，可以修改登录成功后默认跳转的URL（默认/）
